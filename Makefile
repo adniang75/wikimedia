@@ -50,8 +50,13 @@ run-producer:
 run-console-producer:
 	kafka-console-consumer --topic wikimedia_recentchange --from-beginning --bootstrap-server macbook-pro.home:9092 | jq .
 
+# Target to run the Kafka producer 🏃
+# Runs the Kafka producer application
+run-consumer:
+	mvn spring-boot:run -pl kafka-consumer-wikimedia
+
 # Declare targets as phony labels to avoid conflicts with real file names 🎭
-.PHONY: run-zookeeper run-kafka clean compile package test run-producer
+.PHONY: run-zookeeper run-kafka clean compile package test run-producer run-console-producer run-consumer
 
 # Default target that displays help on using the Makefile 📚
 help:
@@ -66,4 +71,5 @@ help:
 	@echo "  make test            		- Executes tests on the application"
 	@echo "  make run-producer    		- Runs the Kafka producer"
 	@echo "  make run-console-producer 	- Runs the Kafka producer"
+	@echo "  make run-consumer    		- Runs the Kafka consumer"
 	@echo "  make help            		- Displays this help screen"
