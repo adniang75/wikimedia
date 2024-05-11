@@ -53,7 +53,7 @@ run-console-producer:
 # Target to run the Kafka producer 🏃
 # Runs the Kafka producer application
 run-consumer:
-	mvn spring-boot:run -pl kafka-consumer-wikimedia
+	mvn spring-boot:run -pl kafka-consumer-database
 
 # Declare targets as phony labels to avoid conflicts with real file names 🎭
 .PHONY: run-zookeeper run-kafka clean compile package test run-producer run-console-producer run-consumer
