@@ -45,6 +45,11 @@ test: clean
 run-producer:
 	mvn spring-boot:run -pl kafka-producer-wikimedia
 
+# Target to run the Kafka producer 🏃
+# Runs the a console consumer to test the application
+run-console-producer:
+	kafka-console-consumer --topic wikimedia_recentchange --from-beginning --bootstrap-server macbook-pro.home:9092 | jq .
+
 # Declare targets as phony labels to avoid conflicts with real file names 🎭
 .PHONY: run-zookeeper run-kafka clean compile package test run-producer
 
@@ -53,11 +58,12 @@ help:
 	@echo "Usage: make [command]"
 	@echo ""
 	@echo "Commands:"
-	@echo "  make run-zookeeper   - Starts Zookeeper"
-	@echo "  make run-kafka       - Starts Kafka"
-	@echo "  make clean           - Cleans the project directory"
-	@echo "  make compile         - Compiles the application"
-	@echo "  make package         - Packages the application into a distributable format"
-	@echo "  make test            - Executes tests on the application"
-	@echo "  make run-producer    - Runs the Kafka producer"
-	@echo "  make help            - Displays this help screen"
+	@echo "  make run-zookeeper  		- Starts Zookeeper"
+	@echo "  make run-kafka       		- Starts Kafka"
+	@echo "  make clean           		- Cleans the project directory"
+	@echo "  make compile         		- Compiles the application"
+	@echo "  make package         		- Packages the application into a distributable format"
+	@echo "  make test            		- Executes tests on the application"
+	@echo "  make run-producer    		- Runs the Kafka producer"
+	@echo "  make run-console-producer 	- Runs the Kafka producer"
+	@echo "  make help            		- Displays this help screen"
